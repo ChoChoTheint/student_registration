@@ -18,7 +18,6 @@ require "conn.php";
                 </form>
                 <form action="excel.php" method="post">
                     <input type="submit" class="btn btn-success" name="excel" value="excel">
-                    <!-- <button type="submit" class="btn btn-success" name="excel">Excel</button> -->
                 </form>
           </div>
         
@@ -84,10 +83,10 @@ require "conn.php";
                 $link = "";
                 for ($i=1; $i<=$tot_page; $i++) {   
                     if ($i == $page) {   
-                        $link .= "<a class = 'active' href='pegination.php?page=".$i."'>".$i." </a>";   
+                        $link .= "<a class = 'active' href='list.php?page=".$i."'>".$i." </a>";   
                     }               
                     else  {   
-                        $link .= "<a href='pegination.php?page=".$i."'>".$i." </a>";     
+                        $link .= "<a href='list.php?page=".$i."'>".$i." </a>";     
                     }   
                   };
                   echo $link;   

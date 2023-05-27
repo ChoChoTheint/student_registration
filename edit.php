@@ -10,31 +10,25 @@
 <body>
 <?php
 require "conn.php";
+$id = $_GET['id'];
 
-$sql_query = "SELECT * FROM student_register";
+$sql_query = "SELECT * FROM student_register where id = ".$id;
+$result = $conn->query($sql_query);
+$row = mysqli_fetch_array($result);
+$id = $row['id'];
+$name = $row['name'];
+$father_name = $row['father_name'];
+$nrc = $row['nrc'];
+$phone_no = $row['phone_no'];
+$email = $row['email'];
+$gender = $row['gender'];
+$date_of_birth = $row['date_of_birth'];
+$address = $row['address'];
+$career = $row['career'];
+$skill = $row['skill'];
+$file_path = $row['file'];
 
-if($result = $conn->query($sql_query)){
-
-    if(mysqli_num_rows($result) > 0){
-      $row = mysqli_fetch_array($result);
-      $id = $row['id'];
-      $name = $row['name'];
-      $father_name = $row['father_name'];
-      $nrc = $row['nrc'];
-      $phone_no = $row['phone_no'];
-      $email = $row['email'];
-      $gender = $row['gender'];
-      $date_of_birth = $row['date_of_birth'];
-      $address = $row['address'];
-      $career = $row['career'];
-      $skill = $row['skill'];
-      $file_path = $row['file'];
-
-    }
-}
 if(isset($_POST['submit'])){
-
-//   $id = $_POST['id'];
   $name = $_POST['name'];
   $father_name = $_POST['fatherName'];
   $nrc = $_POST['nrc'];
@@ -52,7 +46,8 @@ if(isset($_POST['submit'])){
         }else{               
             echo "Update error....." . mysqli_error($conn);
         }
-      }
+      
+    }
 ?>
 
 <div class="container" my="2">
